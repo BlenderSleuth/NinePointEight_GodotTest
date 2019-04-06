@@ -1,0 +1,12 @@
+
+# Godot-specific ignores
+.import/
+export/
+export.cfg
+export_presets.cfg
+
+# Mono-specific ignores
+.mono/
+
+# Blender-specific ignores
+*.blend[0-9]
