@@ -10,3 +10,5 @@ export_presets.cfg
 
 # Blender-specific ignores
 *.blend[0-9]
+
+temp/
