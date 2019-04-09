@@ -12,3 +12,5 @@ export_presets.cfg
 *.blend[0-9]
 
 temp/
+
+dummy*

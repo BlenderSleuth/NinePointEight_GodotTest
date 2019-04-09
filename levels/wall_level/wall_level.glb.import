@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/WallLevel.glb-6797d0f53be2a06aae80a7b44c4f1724.scn"
+path="res://.import/wall_level.glb-7aebf18f9a4e88f9656a1b09a7fa7416.scn"
 
 [deps]
 
-source_file="res://levels/WallLevel/WallLevel.glb"
-dest_files=[ "res://.import/WallLevel.glb-6797d0f53be2a06aae80a7b44c4f1724.scn" ]
+source_file="res://levels/wall_level/wall_level.glb"
+dest_files=[ "res://.import/wall_level.glb-7aebf18f9a4e88f9656a1b09a7fa7416.scn" ]
 
 [params]
 
@@ -24,7 +24,7 @@ meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0
 meshes/lightmap_texel_size=0.1
-external_files/store_in_subdir=true
+external_files/store_in_subdir=false
 animation/import=true
 animation/fps=30.0
 animation/filter_script=""
