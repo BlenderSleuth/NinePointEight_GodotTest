@@ -7,10 +7,12 @@ export (Vector3) var centre_line_direction: Vector3
 export (bool) var inside = true
 
 func get_gravity_direction(player_transform: Transform) -> Vector3:
+    # Find closest point on line to player as attraction point
 
     # Define gravity line: point on line (a) and vector (n) in direction of line
     var a := global_transform.origin
-    var n := centre_line_direction
+    # Convert to global coordinates
+    var n := global_transform.basis.xform(centre_line_direction)
     # Point to find closest point on line to
     var p := player_transform.origin
 

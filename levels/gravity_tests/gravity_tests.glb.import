@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/wall_level.glb-7aebf18f9a4e88f9656a1b09a7fa7416.scn"
+path="res://.import/gravity_tests.glb-f19bffd73b460fe3fa04ee797781a976.scn"
 
 [deps]
 
-source_file="res://levels/wall_level/wall_level.glb"
-dest_files=[ "res://.import/wall_level.glb-7aebf18f9a4e88f9656a1b09a7fa7416.scn" ]
+source_file="res://levels/gravity_tests/gravity_tests.glb"
+dest_files=[ "res://.import/gravity_tests.glb-f19bffd73b460fe3fa04ee797781a976.scn" ]
 
 [params]
 
