@@ -5,7 +5,6 @@ func get_player() -> Player:
     if group.size() > 0:
         return group[0] as Player
     else:
-        print("ERROR: no player found")
         return null
 
 func get_player_grav_centre() -> Area:
@@ -13,5 +12,4 @@ func get_player_grav_centre() -> Area:
     if group.size() > 0:
         return group[0] as Area
     else:
-        print("ERROR: no player gravity centre found")
         return null

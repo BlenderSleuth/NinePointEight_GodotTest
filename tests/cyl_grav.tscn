@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://objects/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/gravity/attractor.gd" type="Script" id=2]
+[ext_resource path="res://objects/gravity/definitions/cylinder_gravity.gd" type="Script" id=3]
+
+[sub_resource type="CylinderMesh" id=1]
+top_radius = 50.0
+bottom_radius = 50.0
+height = 40.0
+
+[sub_resource type="CylinderMesh" id=2]
+top_radius = 45.0
+bottom_radius = 45.0
+height = 45.0
+
+[sub_resource type="CylinderShape" id=3]
+radius = 47.4995
+height = 59.1107
+
+[node name="spatial" type="Spatial"]
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+
+[node name="csg_combiner" type="CSGCombiner" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
+use_collision = true
+
+[node name="csg_mesh" type="CSGMesh" parent="csg_combiner"]
+mesh = SubResource( 1 )
+
+[node name="csg_mesh_2" type="CSGMesh" parent="csg_combiner"]
+operation = 2
+mesh = SubResource( 2 )
+
+[node name="directional_light" type="DirectionalLight" parent="."]
+transform = Transform( -0.7264, -0.0521595, 0.68529, 0.536552, 0.580067, 0.61289, -0.429482, 0.812897, -0.393374, 0, 62, -104 )
+
+[node name="Attractor" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="grav_influence" type="Area" parent="Attractor"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
+
+[node name="collision_shape" type="CollisionShape" parent="Attractor/grav_influence"]
+shape = SubResource( 3 )
+
+[node name="grav_definition" type="Spatial" parent="Attractor"]
+script = ExtResource( 3 )
+centre_line_direction = Vector3( 0, 0, 1 )
+

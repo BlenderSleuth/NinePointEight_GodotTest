@@ -1,6 +1,6 @@
 extends GravityDefinition
 
-class_name GravitySurface, "res://misc/icons/icon_grav_surface.svg"
+class_name SurfaceGravity, "res://misc/icons/icon_grav_surface.svg"
 
 export(Mesh) var mesh
 
@@ -79,10 +79,8 @@ func find_triangle(from: Vector3, dir: Vector3) -> Array:
 func edge_function(a: Vector2, b: Vector2, c: Vector2) -> float:
     return (c.x - a.x) * (b.y - a.y) - (c.y - a.y) * (b.x - a.x)
 
-var smoothed_normal := Vector3.UP
 func get_smoothed_normal(from: Vector3, dir: Vector3) -> Vector3:
-
-    var triangle = find_triangle(from, dir)
+    var triangle := find_triangle(from, dir)
     if triangle:
         # Extract points
         var v0 := triangle[0] as Vector3
@@ -121,15 +119,14 @@ func get_smoothed_normal(from: Vector3, dir: Vector3) -> Vector3:
             var v2_normal := vertex_normals[triangle[2]] as Vector3
 
             # Interpolate vertex normals with barycentric coordinates to get a smoothed normal
-            smoothed_normal = Basis(v0_normal, v1_normal, v2_normal).xform(Vector3(w0, w1, w2))
+            return Basis(v0_normal, v1_normal, v2_normal).xform(Vector3(w0, w1, w2))
             # Equivalent to:
             # smoothed_normal = w0 * v0_normal + w1 * v1_normal + w2 * v2_normal
 
 
-    return smoothed_normal
+    return Vector3.ZERO
 
-
-var grav_vec := Vector3.DOWN
+# Returns Vector or INF if invalid
 func get_gravity_direction(player_transform: Transform) -> Vector3:
     var ray_length := 160
     var from := player_transform.origin
@@ -139,11 +136,9 @@ func get_gravity_direction(player_transform: Transform) -> Vector3:
     var local_from = global_transform.xform_inv(from)
     var local_dir = global_transform.xform_inv(dir)
 
-    var smoothed_normal = get_smoothed_normal(local_from, local_dir)
+    var smoothed_normal := get_smoothed_normal(local_from, local_dir)
 
     if smoothed_normal:
-        grav_vec = -transform.xform(smoothed_normal)
-
-    #print(smoothed_normal)
-
-    return grav_vec
+        return -transform.xform(smoothed_normal)
+    else:
+        return Vector3.INF

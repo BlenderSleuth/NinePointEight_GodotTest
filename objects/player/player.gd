@@ -147,15 +147,17 @@ func rotate_forward(local_player_movement: Vector3, delta: float) -> void:
         player_control.transform.basis = Basis(slerped_rotation).orthonormalized()
 
 
-# Keep direction even if outside of attractor
+# Keep gravity direction even if outside of attractor
 var grav_vec := Vector3.DOWN
 
 func _physics_process(delta: float) -> void:
 
     # Gravity vector is calculated by attractor
     if attractor:
-        grav_vec = attractor.get_gravity_direction(transform)
-        # print(attractor.name)
+        # Only assign if not null
+        var new_vec := attractor.get_gravity_direction(global_transform)
+        if new_vec != Vector3.INF:
+            grav_vec = new_vec
 
     # Rotate player so down faces gravity
     var down = -transform.basis.y

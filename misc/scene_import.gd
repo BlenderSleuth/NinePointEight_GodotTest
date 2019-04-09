@@ -30,26 +30,43 @@ func setup_grav(node: Node) -> void:
 
         # Create a gravity surface
         if node is MeshInstance:
-            var grav_surface := GravitySurface.new()
+            var grav_surface := SurfaceGravity.new()
             grav_surface.name = "grav_definition"
             grav_surface.mesh = node.mesh
             node.get_parent().add_child(grav_surface)
             grav_surface.set_owner(scene)
 
-        # Create a linear gravity field
+        # Create a mathematically defined gravity field
         elif node is Spatial:
-            var grav_linear := GravityLinear.new()
-            grav_linear.name = "grav_definition"
-            # Set direction based on node orientation
-            grav_linear.direction = node.transform.basis.xform(Vector3.UP).normalized()
-            node.get_parent().add_child(grav_linear)
-            grav_linear.set_owner(scene)
+            if node.name.match("*-cylinder*"):
+                # Cylindrical field
+                var grav_cylinder = CylinderGravity.new()
+                grav_cylinder.name = "grav_definition"
+                grav_cylinder.transform.origin = (node as Spatial).transform.origin
+                # Get vector point in orientation of cylinder
+                grav_cylinder.centre_line_direction = (node as Spatial).transform.basis.xform(Vector3.FORWARD).normalized()
+                # If an inverted cylinder:
+                if node.name.match("*-cylinder!*"):
+                    grav_cylinder.inside = false
+                else:
+                    grav_cylinder.inside = true
+
+                node.get_parent().add_child(grav_cylinder)
+                grav_cylinder.set_owner(scene)
+            else:
+                # Linear field
+                var grav_linear := LinearGravity.new()
+                grav_linear.name = "grav_definition"
+                # Set direction based on node orientation
+                grav_linear.direction = node.transform.basis.xform(Vector3.UP).normalized()
+                node.get_parent().add_child(grav_linear)
+                grav_linear.set_owner(scene)
 
         # Don't need node now
         node.free()
 
     # Option -grav is set, create a gravitational influence area
-    elif node.name.match("*-grav*") and node is MeshInstance:
+    elif node.name.match("*-grav_area*") and node is MeshInstance:
         # Create area
         var area := Area.new()
         area.name = "grav_influence"
@@ -60,7 +77,7 @@ func setup_grav(node: Node) -> void:
 
         var collision_shape: Shape
 
-        # Always create convex shape, area doesn't work with concave under bullet
+        # Always create convex shape, area doesn't work with concave under bullet physics
         collision_shape = (node as MeshInstance).mesh.create_convex_shape()
         #collision_shape = (node as MeshInstance).mesh.create_trimesh_shape()
 

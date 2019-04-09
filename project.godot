@@ -14,32 +14,38 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://objects/gravity/attractor.gd"
 }, {
+"base": "GravityDefinition",
+"class": "CylinderGravity",
+"language": "GDScript",
+"path": "res://objects/gravity/definitions/cylinder_gravity.gd"
+}, {
 "base": "Spatial",
 "class": "GravityDefinition",
 "language": "GDScript",
 "path": "res://objects/gravity/gravity_definition.gd"
 }, {
 "base": "GravityDefinition",
-"class": "GravityLinear",
+"class": "LinearGravity",
 "language": "GDScript",
 "path": "res://objects/gravity/definitions/linear_gravity.gd"
-}, {
-"base": "GravityDefinition",
-"class": "GravitySurface",
-"language": "GDScript",
-"path": "res://objects/gravity/definitions/surface_gravity.gd"
 }, {
 "base": "KinematicBody",
 "class": "Player",
 "language": "GDScript",
 "path": "res://objects/player/player.gd"
+}, {
+"base": "GravityDefinition",
+"class": "SurfaceGravity",
+"language": "GDScript",
+"path": "res://objects/gravity/definitions/surface_gravity.gd"
 } ]
 _global_script_class_icons={
 "Attractor": "res://misc/icons/icon_attractor.svg",
+"CylinderGravity": "res://misc/icons/icon_grav_surface.svg",
 "GravityDefinition": "",
-"GravityLinear": "res://misc/icons/icon_grav_linear.svg",
-"GravitySurface": "res://misc/icons/icon_grav_surface.svg",
-"Player": ""
+"LinearGravity": "res://misc/icons/icon_grav_linear.svg",
+"Player": "",
+"SurfaceGravity": "res://misc/icons/icon_grav_surface.svg"
 }
 
 [application]
@@ -1139,10 +1145,6 @@ right={
 
 name_num_separator=2
 name_casing=2
-
-[physics]
-
-3d/physics_engine="GodotPhysics"
 
 [rendering]
 

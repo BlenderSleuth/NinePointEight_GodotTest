@@ -1,6 +1,6 @@
 extends GravityDefinition
 
-class_name GravityLinear, "res://misc/icons/icon_grav_linear.svg"
+class_name LinearGravity, "res://misc/icons/icon_grav_linear.svg"
 
 export (Vector3) var direction: Vector3
 

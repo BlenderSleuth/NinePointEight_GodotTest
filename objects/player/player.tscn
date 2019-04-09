@@ -2,7 +2,6 @@
 
 [ext_resource path="res://objects/player/player.gd" type="Script" id=1]
 
-
 [sub_resource type="CapsuleShape" id=1]
 radius = 2.0
 height = 3.0
@@ -13,8 +12,6 @@ mid_height = 3.0
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.580392, 0.262745, 0.898039, 1 )
-metallic = 1.0
-roughness = 0.32
 
 [sub_resource type="CylinderMesh" id=4]
 top_radius = 0.2
