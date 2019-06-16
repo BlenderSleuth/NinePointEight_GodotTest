@@ -57,13 +57,8 @@ _global_script_class_icons={
 [application]
 
 config/name="NinePointEight"
-run/main_scene="res://levels/gravity_tests/gravity_tests.tscn"
+run/main_scene="res://dummy.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-PlayerData="*res://objects/singletons/player_data.gd"
-Main="*res://objects/singletons/main.gd"
 
 [debug]
 
@@ -1152,7 +1147,3 @@ right={
 
 name_num_separator=2
 name_casing=2
-
-[rendering]
-
-environment/default_environment="res://env/space2.tres"

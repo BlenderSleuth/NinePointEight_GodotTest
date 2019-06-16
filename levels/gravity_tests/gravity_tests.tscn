@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://levels/gravity_tests/gravity_tests.glb" type="PackedScene" id=1]
 [ext_resource path="res://levels/gravity_tests/green.material" type="Material" id=2]
@@ -6,7 +6,14 @@
 [ext_resource path="res://levels/gravity_tests/orange.material" type="Material" id=4]
 [ext_resource path="res://levels/gravity_tests/blue.material" type="Material" id=5]
 [ext_resource path="res://objects/player/player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://env/space2.tres" type="Environment" id=7]
+[ext_resource path="res://env/spacebackground2.png" type="Texture" id=7]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 7 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
 
 [node name="root" index="0" instance=ExtResource( 1 )]
 
@@ -73,5 +80,4 @@ light_color = Color( 0.980392, 0.87451, 0.737255, 1 )
 transform = Transform( -1, 0, -1.50996e-007, 0, 1, 0, 1.50996e-007, 0, -1, 0, 29.1872, 36.018 )
 
 [node name="world_environment" type="WorldEnvironment" parent="." index="8"]
-environment = ExtResource( 7 )
-
+environment = SubResource( 2 )
