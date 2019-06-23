@@ -48,4 +48,3 @@ shape = SubResource( 3 )
 [node name="grav_definition" type="Spatial" parent="Attractor"]
 script = ExtResource( 3 )
 centre_line_direction = Vector3( 0, 0, 1 )
-

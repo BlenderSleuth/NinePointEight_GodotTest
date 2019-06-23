@@ -22,6 +22,7 @@ editor/display_folded = true
 material/0 = ExtResource( 2 )
 
 [node name="sph01" parent="." index="1"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 457.612, 81.6266, 126.277 )
 material/0 = ExtResource( 3 )
 
@@ -53,11 +54,7 @@ editor/display_folded = true
 centre_line_direction = Vector3( 1, 0, 0 )
 
 [node name="ground" parent="." index="4"]
-editor/display_folded = true
 material/0 = ExtResource( 2 )
-
-[node name="convcol" parent="ground" index="0"]
-editor/display_folded = true
 
 [node name="path01" parent="." index="5"]
 editor/display_folded = true

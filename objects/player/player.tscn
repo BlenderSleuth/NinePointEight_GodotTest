@@ -27,7 +27,7 @@ radius = 0.00441311
 "player",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
-collision/safe_margin = 0.01
+collision/safe_margin = 0.1
 script = ExtResource( 1 )
 
 [node name="shape" type="CollisionShape" parent="."]
@@ -59,4 +59,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.96187, 0 )
 
 [node name="collision_shape" type="CollisionShape" parent="gravity_centre"]
 shape = SubResource( 6 )
-

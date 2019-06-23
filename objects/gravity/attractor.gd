@@ -27,19 +27,17 @@ func _ready() -> void:
 ## Area signals
 
 func area_entered(area: Area) -> void:
-    pass
     # If it's the player, set the attractor
-    #if area == PlayerData.get_player_grav_centre():
-    #    PlayerData.get_player().attractor = self
+    if area == PlayerData.get_player_grav_centre():
+        PlayerData.get_player().attractor = self
 
 
 func area_exited(area: Area) -> void:
-    pass
     # If it's the player, revert to defined attractor or default
-    #if area == PlayerData.get_player_grav_centre():
-     #   var player = PlayerData.get_player()
-      #  if player.attractor == self:
-       #     player.attractor = revert_attractor_node # null (default) or defined attractor
+    if area == PlayerData.get_player_grav_centre():
+        var player = PlayerData.get_player()
+        if player.attractor == self:
+            player.attractor = revert_attractor_node # null (default) or defined attractor
 
 
 
