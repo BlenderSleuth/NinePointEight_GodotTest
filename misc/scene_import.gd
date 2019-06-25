@@ -26,7 +26,7 @@ func setup_grav(node: Node) -> void:
 
     # Create a gravity definition
     elif node.name.match("*-grav_definition*"):
-        
+
         if node is MeshInstance:
             # Create a gravity surface
             var grav_surface := SurfaceGravity.new()
@@ -70,7 +70,7 @@ func setup_grav(node: Node) -> void:
                 var grav_curve := CurveGravity.new()
                 grav_curve.name = "grav_definition"
                 var curve := Curve3D.new()
-                
+
                 var mesh_encoding := node.get_children()[0] as MeshInstance
                 var faces := mesh_encoding.mesh.get_faces()
                 for i in range(len(faces)/3):
@@ -78,11 +78,11 @@ func setup_grav(node: Node) -> void:
                     var r := faces[3*i+1]
                     var c := faces[3*i+2]
                     curve.add_point(c, l-c, r-c)
-                
+
                 grav_curve.curve = curve
                 node.get_parent().add_child(grav_curve)
                 grav_curve.set_owner(scene)
-                
+
                 var debug_path = Path.new()
                 debug_path.curve = curve
                 scene.add_child(debug_path)
@@ -139,10 +139,10 @@ func setup_grav(node: Node) -> void:
 
 func post_import(scene: Object) -> Object:
     self.scene = scene
-    
+
     setup_grav(scene as Node)
     print("hi")
-    
+
     #print_all_nodes(scene, 0)
 
     return scene

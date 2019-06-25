@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/gravity_tests.glb-f19bffd73b460fe3fa04ee797781a976.scn"
+path="res://.import/curve_gravity_tests.glb-c7587c387670c0ddd6df5d9131f7bbd4.scn"
 
 [deps]
 
-source_file="res://levels/gravity_tests/gravity_tests.glb"
-dest_files=[ "res://.import/gravity_tests.glb-f19bffd73b460fe3fa04ee797781a976.scn" ]
+source_file="res://tests/curve_gravity_tests/curve_gravity_tests.glb"
+dest_files=[ "res://.import/curve_gravity_tests.glb-c7587c387670c0ddd6df5d9131f7bbd4.scn" ]
 
 [params]
 
